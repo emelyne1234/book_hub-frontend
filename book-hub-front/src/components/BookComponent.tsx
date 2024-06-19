@@ -11,7 +11,7 @@ const BookComponent: React.FC<BookComponentProps> = ({ book }) => {
   const navigate = useNavigate();
 
   const handleCardClick = () => {
-    navigate(`/books/${book._id}`);
+    navigate(`/books/details/${book._id}`);
   };
 
   return (

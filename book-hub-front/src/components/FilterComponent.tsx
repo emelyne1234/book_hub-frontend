@@ -3,37 +3,59 @@ import { Form, Row, Col } from "react-bootstrap";
 
 interface FilterComponentProps {
   searchQuery: string;
-  pageSize: number;
-  handleSearchChange: (event: React.ChangeEvent) => void;
-  handlePageSizeChange: (event: React.ChangeEvent) => void;
+  authorQuery: string;
+  genre: string;
+  sort: string;
+  handleSearchChange: (event: any) => void;
+  handleAuthorChange: (event: any) => void;
+  handleGenreChange: (event: any) => void;
+  handleSortChange: (event: any) => void;
 }
 
 const FilterComponent: React.FC<FilterComponentProps> = ({
   searchQuery,
-  pageSize,
+  authorQuery,
+  genre,
+  sort,
   handleSearchChange,
-  handlePageSizeChange,
+  handleAuthorChange,
+  handleGenreChange,
+  handleSortChange,
 }) => {
   return (
     <Form className="mb-4">
       <Row>
-        <Col xs={8}>
+        <Col xs={12} sm={3} className="mb-2 mb-sm-0">
           <Form.Control
             type="text"
-            placeholder="Search books..."
+            placeholder="Search by title..."
             value={searchQuery}
             onChange={handleSearchChange}
           />
         </Col>
-        <Col xs={4}>
+        <Col xs={12} sm={3} className="mb-2 mb-sm-0">
           <Form.Control
-            as="select"
-            value={pageSize}
-            onChange={handlePageSizeChange}
-          >
-            <option value={10}>10 per page</option>
-            <option value={20}>20 per page</option>
-            <option value={50}>50 per page</option>
+            type="text"
+            placeholder="Search by author..."
+            value={authorQuery}
+            onChange={handleAuthorChange}
+          />
+        </Col>
+        <Col xs={12} sm={3} className="mb-2 mb-sm-0">
+          <Form.Control as="select" value={genre} onChange={handleGenreChange}>
+            <option value="">All genres</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Science Fiction">Science Fiction</option>
+            <option value="Mystery">Mystery</option>
+            <option value="Romance">Romance</option>
+            <option value="Thriller">Thriller</option>
+          </Form.Control>
+        </Col>
+        <Col xs={12} sm={3} className="mb-2 mb-sm-0">
+          <Form.Control as="select" value={sort} onChange={handleSortChange}>
+            <option value="">Sort by</option>
+            <option value="date">Date</option>
+            <option value="rating">Rating</option>
           </Form.Control>
         </Col>
       </Row>
