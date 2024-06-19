@@ -10,8 +10,13 @@ export const bookHubApi = createApi({
       query: () => "books",
     }),
 
+    // Fetch a book by ID
+    getBookById: builder.query<Book, string>({
+      query: (id) => `books/${id}`,
+    }),
+
     // Create a new book
-    createBook: builder.mutation<Book, Partial<Book>>({
+    createBook: builder.mutation({
       query: (newBook) => ({
         url: `books`,
         method: "POST",
@@ -43,5 +48,6 @@ export const {
   useCreateBookMutation,
   useUpdateBookMutation,
   useDeleteBookMutation,
+  useGetBookByIdQuery,
 } = bookHubApi;
 export const bookHubApiReducer = bookHubApi.reducer;

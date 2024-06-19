@@ -1,3 +1,14 @@
+import CreateBookForm from "../components/CreateBookForm";
+import FooterComponent from "../components/FooterComponent";
+import NavbarComponent from "../components/NavbarComponent";
 export const CreateBook = () => {
-  return <div>CreateBook</div>;
+  return (
+    <>
+      <NavbarComponent />
+      <div className="p-4">
+        <CreateBookForm />
+      </div>
+      <FooterComponent />
+    </>
+  );
 };
